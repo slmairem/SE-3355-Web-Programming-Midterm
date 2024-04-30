@@ -1,0 +1,24 @@
+{% extends "navbar.html" %} 
+
+{% block title %}Ürün Detayları{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-3" id="detaylar" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ product_details[4] }}" alt="Ürün Resmi" class="img-fluid">
+        </div>
+        <div class="col-md-8">
+            <p id="kategori">Kategori: {{ category_name }}</p>
+            <p id="yer">Konum: {{ product_details[7] }}</p>
+            <h2 id="urun_basligi">{{ product_details[2] }}</h2>
+            <p id="marka">{{ product_details[9] }}</p>
+            <p id="fiyat">{{ product_details[3] }} TL</p>
+            <p id="yildiz">{{ product_details[8] }}</p>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

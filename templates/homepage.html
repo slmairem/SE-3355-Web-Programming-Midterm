@@ -1,0 +1,42 @@
+{% extends "navbar.html" %} 
+
+{% block title_page %} Homepage {% endblock title_page %}
+
+{% block content %}
+<style>
+    .slider-container {
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .slider {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+    
+    .slider img {
+        width: 100%;
+        height: auto;
+    }
+</style>
+
+<div class="slider-container">
+    <div class="slider">
+        {% for image in slider_images %}
+            <img src="{{ image[0] }}" alt="Slider Image">
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    // Otomatik olarak slayt geçişini sağlayan JavaScript kodu
+    let slider = document.querySelector('.slider');
+    let sliderWidth = slider.offsetWidth;
+    let index = 0;
+    
+    setInterval(() => {
+        index = (index + 1) % slider.children.length;
+        slider.style.transform = `translateX(-${index * sliderWidth}px)`;
+    }, 3000); // Her 3 saniyede bir geçiş yapar
+</script>
+{% endblock content %}

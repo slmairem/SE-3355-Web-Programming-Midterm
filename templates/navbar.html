@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>    
+    <title>{% block title %}Home{% endblock %}</title>
+</head>
+<body>
+        <div class="top">
+            <button type="button" class="ust">Siparişlerim</button>
+            <button type="button" class="ust">Süper Fiyat, Süper Teklif</button>
+            <button type="button" class="ust">Yurt Dışından</button>
+            <button type="button" class="ust">Kampanyalar</button>
+            <button type="button" class="ust2">Girişimci Kadınlar</button>
+            <button type="button" class="ust">Müşteri Hizmetleri</button>
+            <button type="button" class="ust3">Hepsiburada Premium</button>
+            <button type="button" class="ust">Hepsiburada'da Satıcı Ol</button>
+        </div>
+        
+        <div class="header">
+            <div class="logo">
+                <a href="/">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Hepsiburada_logo_official.svg/2560px-Hepsiburada_logo_official.svg.png" alt="logo" style="cursor: pointer;">
+                </a>
+            </div>
+            <div class="container mt-3">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form action="/search" method="GET"> <!-- Formu /search endpoint'ine gönder -->
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="aranan_kelime" placeholder="Ürün kategori veya marka ara" aria-label="Ürün kategori veya marka ara" aria-describedby="basic-addon2">
+                                <button class="btn btn-outline-secondary" type="submit">Ara</button> <!-- Formu gönder -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="other">
+                <select id="locationSelect" class="custom-select">
+                    <option selected>Konum Seç</option>
+                    <option value="Izmir">İzmir</option>
+                    <option value="Istanbul">İstanbul</option>
+                    <option value="Ankara">Ankara</option>
+                </select>
+                <button id="girisButton" type="button" class="btn btn-secondary">Giriş Yap</button>
+                <button id="sepetButton" type="button" class="btn btn-secondary btn-lg">Sepetim</button>
+            </div>   
+        </div>
+
+    <div class="categories">
+        <button type="button">Elektronik</button>
+        <button type="button">Moda</button>
+        <button type="button">Ev, Yaşam, Kırtasiye, Ofis</button>
+        <button type="button">Oto, Bahçe, Yapı Market</button>
+        <button type="button">Anne, Bebek, Oyuncak</button>
+        <button type="button">Spor, Outdoor</button>
+        <button type="button">Kozmetik, Kişisel Bakım</button>
+        <button type="button">Süpermarket, Pet Shop</button>
+        <button type="button">Kitap, Müzik, Film, Hobi</button>
+    </div>
+    
+    {% block content %} {% endblock content %}
+
+    
+</body>
+
+<script>
+    // "Yarın Kapımda" butonuna tıklandığında işlem yapılacak
+    document.getElementById('yarinkapimdaButton').addEventListener('click', function() {
+        // Navbar'dan seçili konumu al
+        var selectedLocation = document.getElementById('selectedLocation').value;
+
+        // Yönlendirme yap
+        window.location.href = "/search?location=" + selectedLocation;
+    });
+
+    // Konum seçildiğinde selectedLocation değerini güncelle ve "/search" sayfasına yönlendir
+    document.getElementById('locationSelect').addEventListener('change', function() {
+        var selectedLocation = this.value;
+        document.getElementById('selectedLocation').value = selectedLocation;
+
+        // "/search" sayfasına yönlendir
+        window.location.href = "/search?location=" + selectedLocation;
+    });
+</script>
+
+
+
+</html>
+
+

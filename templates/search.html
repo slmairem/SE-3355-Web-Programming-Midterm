@@ -1,0 +1,130 @@
+{% extends "navbar.html" %} 
+
+{% block title %}Arama Sonuçları{% endblock title %}
+
+{% block content %}
+
+<div class="container" style="margin-top: 20px;">
+    <div class="buttttton">
+       <button id="yarinkapimdaButton" type="button" class="btn btn-secondary">Yarın Kapımda</button>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <h2>Kategoriler</h2>
+            <ul id="category-buttons">
+                {% for category in categories %}
+                    <li>
+                        <button type="button" class="category" data-category="{{ category[0] }}">{{ category[1] }}</button>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <h2>Ürünler</h2>
+            <div class="row" id="product-list">
+                {% for product in search_results %}
+                    {% if selected_location %}
+                        {% if product[7] == selected_location %}
+                            <div class="col-md-3 product-item" data-category="{{ product[5] }}">
+                                <div class="card">
+                                    <a href="{{ url_for('product_details', product_id=product[0]) }}">
+                                        <img src="{{ product[4] }}" class="card-img-top" alt="Ürün Resmi">
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ product[2] }}</h5>
+                                        <p class="card-text">{{ product[3] }} TL</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="col-md-3 product-item" data-category="{{ product[5] }}">
+                            <div class="card">
+                                <a href="{{ url_for('product_details', product_id=product[0]) }}">
+                                    <img src="{{ product[4] }}" class="card-img-top" alt="Ürün Resmi">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product[2] }}</h5>
+                                    <p class="card-text">{{ product[3] }} TL</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                {% if not search_results %}
+                    {% for product in products %}
+                        {% if selected_location %}
+                            {% if product[7] == selected_location %}
+                                <div class="col-md-3 product-item" data-category="{{ product[5] }}">
+                                    <div class="card">
+                                        <a href="{{ url_for('product_details', product_id=product[0]) }}">
+                                            <img src="{{ product[4] }}" class="card-img-top" alt="Ürün Resmi">
+                                        </a>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ product[2] }}</h5>
+                                            <p class="card-text">{{ product[3] }} TL</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                        <div class="col-md-3 product-item" data-category="{{ product[5] }}">
+                            <div class="card">
+                                <a href="{{ url_for('product_details', product_id=product[0]) }}">
+                                    <img src="{{ product[4] }}" class="card-img-top" alt="Ürün Resmi">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product[2] }}</h5>
+                                    <p class="card-text">{{ product[3] }} TL</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const categoryButtons = document.querySelectorAll('.category');
+        const productItems = document.querySelectorAll('.product-item');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const categoryId = button.getAttribute('data-category');
+
+                // Filtreleme işlemi
+                productItems.forEach(item => {
+                    if (categoryId === 'all' || item.getAttribute('data-category') === categoryId) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+
+    
+
+    // "Yarın Kapımda" butonuna tıklandığında işlem yapılacak
+    document.getElementById('yarinkapimdaButton').addEventListener('click', function() {
+        // Navbar'dan seçili konumu al
+        var locationSelect = document.getElementById('locationSelect');
+        var selectedLocation = locationSelect.options[locationSelect.selectedIndex].value;
+
+        // Yönlendirme yap
+        window.location.href = "/search?location=" + selectedLocation;
+    });
+    
+</script>
+
+
+
+{% endblock content %}

@@ -1,0 +1,292 @@
+* {
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media (min-width: 992px) {
+    .header,
+    .other {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .product-item {
+        width: 23%; /* Dört sütunlu düzen */
+    }
+
+    .categorybox {
+        flex: 0 1 calc(25% - 20px); /* Dört sütunlu düzen */
+    }
+}
+
+/* navbar.html */
+
+.top {
+    justify-content: right;
+    text-align: right;
+    padding: 14px 0px 0px;
+    margin: 0px 5%;
+}
+
+.top button {
+    color: #7b7b7b;
+    background-color: transparent;
+    border: none;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 0 20px; /* Değiştirildi */
+}
+
+.top .ust2 {
+    color: #ed433e;
+}
+
+.top .ust3 {
+    color: #ff6000;
+}
+
+.header{
+    display: flex;
+     width: 90%; /* Değiştirildi */
+    padding: 0px 0px 16px;
+    margin: 0 5%; /* Değiştirildi */
+    justify-content: space-between 
+}
+
+.container.mt-3 .input-group{
+    width: 340px;
+    height: 46px;
+    
+}
+
+.container.mt-3 button.btn {
+    background-color: #646464;
+    color: white;
+}
+
+.header img {
+    width: 191px;
+    height: auto;
+}
+
+.other{
+    display: flex;
+    margin: 0px 0px 0px 16px;
+    padding: 16px 0px 0px;
+}
+
+.custom-select, .other button{ 
+    margin-right: 20px;
+}
+
+.custom-select{
+    border: none;
+    background-color: transparent;
+    font-weight: 700;
+}
+
+#girisButton {
+    border-color: #919191;
+    border-width: 2px;
+    background-color: transparent;
+    color: black;
+    width: 157px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#sepetButton {
+    background-color: #919191;
+    width: 136px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+
+.categories {
+    background-color: #f5f5f5;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    flex-wrap: wrap; 
+    height: auto; /* Otomatik yükseklik ayarı */
+}
+
+.categories button {
+    color: #646464;
+    background-color: transparent;
+    border: none;
+    padding: 0 30px;
+    margin: 10px 0px;
+    font-size: 14px;
+    font-weight: 600;
+    flex: 1;
+}
+
+/* homepage.html */
+
+/* search.html */
+#category-buttons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#category-buttons li {
+    margin-bottom: 5px; /* Adjust as needed */
+}
+
+/* Kategoriler başlığı */
+.col-md-3 h2 {
+    font-size: 1.5em; 
+    color: #333; 
+}
+
+
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Ürünlerin konteynır içinde boşluklarla hizalanması */
+}
+
+.product-item {
+    width: 23%; /* Kutuların dört sütun boyunca sıralanması için */
+    margin-bottom: 30px; /* Alt satır aralığı */
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+}
+
+.card-title {
+    font-size: 18px; /* Başlık yazı tipi boyutu */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-text {
+    font-size: 16px; /* Metin yazı tipi boyutu */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.categorybox {
+    flex: 0 1 calc(25% - 20px); /* 4 sütun olduğu için 100/4 - (4-1)*boşluk_miktarı */
+    margin-bottom: 20px; /* İstediğiniz boşluk miktarını ayarlayabilirsiniz */
+}
+
+
+.square-img {
+    width: 100%;
+    height: 0;
+    padding-top: 100%; /* Kare görünümü için */
+    object-fit: cover;
+}
+
+#yarinkapimdaButton {
+    position: absolute;
+    right: 5%;
+    
+}
+
+.buttttton{
+    padding-bottom: 3%;
+}
+
+
+/* Remove default button styles */
+.category {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    color: #333;
+    padding: 0;
+    margin-bottom: 5px;
+    /* Add any additional styles here */
+}
+
+/* Detaylar containerı */
+#detaylar {
+    margin: 20px auto; /* Sayfanın ortasına hizalama */
+    padding: 20px;
+    border: 2px solid orange; /* Kenarlık rengi */
+    border-radius: 10px; /* Yuvarlatılmış kenarlar */
+}
+
+/* Ürün resmi */
+#detaylar img.img-fluid {
+    max-width: 100%; /* Resmin maksimum genişliği */
+    height: auto; /* Resmin oranını koru */
+    margin-bottom: 20px; /* Resim ile açıklamalar arasındaki boşluk */
+}
+
+/* Açıklamalar arasındaki çizgi */
+#detaylar .col-md-8 {
+    border-left: 2px solid orange; /* Sol kenarlık rengi */
+    padding-left: 20px; /* Sol boşluk */
+}
+
+/* Yazı kısmı */
+#detaylar .col-md-8 p {
+    margin-bottom: 10px; /* Paragraflar arasındaki boşluk */
+}
+
+/* Marka rengi */
+#detaylar .col-md-8 p strong {
+    font-weight: bold; /* Güçlü vurgu font ağırlığı */
+}
+
+#detaylar .col-md-8 h2 {
+    font-size: 20px; 
+    color: #333; /* Başlık metin rengi */
+}
+
+#kategori,
+#marka,
+#fiyat,
+#yer,
+#yildiz {
+    margin-bottom: 10px;
+}
+
+#yer,
+#kategori{
+    font-size: 10px;
+    color: #818181;
+    font-weight: 700;
+}
+
+#urun_basligi{
+    margin-top: 20px;
+}
+
+#marka {
+    font-size: 15px; 
+    color: rgb(103, 134, 191); 
+}
+
+#fiyat{
+    font-size: 30px; 
+    font-weight: 500;
+}
+
+#yildiz {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#yildiz::before {
+    content: " \2605"; /* Unicode yıldız simgesi */
+    color: orange; /* Yıldız rengi */
+}
+
